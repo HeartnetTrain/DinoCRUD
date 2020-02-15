@@ -1,0 +1,13 @@
+<h1>Dinos Profiles</h1>
+
+<h2>Recent Dinos Profiles:</h2>
+
+<ul>
+    {{#each recent}}
+    <li><a href="/users/{{dinoname}}">{{dinoname}}</a></li>
+    {{/each}}
+</ul>
+
+
+<p><a href="/auth/login">Login</a> to update your profile</p>
+<p><a href="/auth/register">Register an account</a></p>
