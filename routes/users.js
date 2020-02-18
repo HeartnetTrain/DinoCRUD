@@ -35,6 +35,28 @@ router.get("/:dinoname", (req, res, next) => {
   });
 });
 
+router.get("/view/friends", function(req, res, next) {
+  if (!req.isAuthenticated()) {
+    res.redirect("/auth/login");
+  }
+  const dinos = req.app.locals.dinos;
+  const mydino_ID = ObjectID(req.session.passport.user);
+  var mydino;
+
+  dinos.findOne({ _id: mydino_ID }, (err, results) => {
+    if (err) throw err;
+    else {
+      mydino = results.dinoname;
+      dinos.find({ dinoname: { $ne: mydino } }).toArray((err, friends) => {
+        res.render("friends", { friends, mydino });
+      });
+    }
+  });
+
+  console.log(mydino);
+  console.log(typeof mydino);
+});
+
 //Delete dino profile
 router.get("/delete/:dinoname", (req, res, next) => {
   const dinos = req.app.locals.dinos;
