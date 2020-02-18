@@ -35,12 +35,16 @@ router.get("/:dinoname", (req, res, next) => {
   });
 });
 
-router.delete("/users/:id", (req, res) => {
-  const _id = ObjectID(req.session.passport.user);
+//Delete dino profile
+router.get("/delete/:dinoname", (req, res, next) => {
   const dinos = req.app.locals.dinos;
+  const dinoname = req.params.dinoname;
 
-  dinos.deleteOne({ _id: _id }, err => {
-    if (err) throw err;
+  dinos.deleteOne({ dinoname }, (err, results) => {
+    if (err || !results) {
+      res.render("public-profile", { messages: { error: ["! "] } });
+    }
+
     res.redirect("/");
   });
 });
