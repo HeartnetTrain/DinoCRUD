@@ -1,5 +1,6 @@
-An app with the purpose to register and login a Dinosaure then update his profile ! 
+# Dino Crud is on the start ! 
 
-It's only a 1.0 version  , updates are gonna be there soon. 
+A simple app using **Passport** and **Express** to register a dinosaur and login ! CRUD features are also included ! 
 
-Don't forget to leave comments if you see any opportunity for bestening the app functionalities ! 
+***Do not forget to leave helpful comments to besten the app ! ***
+
